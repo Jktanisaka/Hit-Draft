@@ -1,10 +1,8 @@
 import React from 'react';
-import HelloWorld from '../components/hello-world';
+import Level1 from './level-1';
 
 export default function Home(props) {
   return (
-    <div>
-      <HelloWorld />
-    </div>
+   <Level1 />
   );
 }
