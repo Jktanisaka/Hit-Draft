@@ -21,6 +21,10 @@ button {
   width: 100px;
 }
 
+button:hover {
+  left: (math.random);
+}
+
 @keyframes x {
   100% {
     transform: translateX(calc(100vw - 100px));
