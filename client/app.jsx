@@ -1,8 +1,7 @@
 import React from 'react';
-import Home from './pages/home';
-
+import Level1 from './pages/level-1';
 export default class App extends React.Component {
   render() {
-    return <Home />;
+    return <Level1 />;
   }
 }
