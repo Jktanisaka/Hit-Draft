@@ -1,17 +1,14 @@
 import React, { useReducer } from 'react';
+import Level3 from './level-3';
 
 export default function Level2(props) {
   const reducer = (state, action) => {
     switch (action.type) {
-      case 'INCREMENT':
-        return {
-          count: state.count + 1,
-          topDimension: state.topDimension,
-          leftDimension: state.leftDimension
-        };
+      case 'passedLevel':
+        return <Level3 />;
       case 'randomizeDimensions':
         return {
-          count: state.count,
+          count: state.count + 1,
           topDimension: Math.random() * 1000,
           leftDimension: Math.random() * 1000
         };
@@ -26,24 +23,18 @@ export default function Level2(props) {
       leftDimension: 100
     });
 
-  // const [counter, setCounter] = useState(0);
-  // const [topDimension, setTopDimension] = useState(100);
-  // const [leftDimension, setLeftDimension] = useState(100);
-
-  // const increment = () => {
-  //   setCounter(counter + 1);
-  // };
-
-  // const handleEnter = () => {
-  //   setTopDimension(Math.random() * 1000);
-  //   setLeftDimension(Math.random() * 1000);
-  // };
-
+  if (state.count === 6) {
+    return (
+      <div style={{ position: 'relative' }}>
+        <button style={{ top: 300, left: 500, position: 'absolute' }}
+          onClick={() => { dispatch({ type: 'passedLevel' }); }}></button>
+      </div>
+    );
+  }
   return (
     <div style={{ position: 'relative' }}>
       <button style={{ top: state.topDimension, left: state.leftDimension, position: 'absolute' }}
-      onMouseEnter={() => { dispatch({ type: 'randomizeDimensions' }); }}
-      onClick={() => { dispatch({ type: 'INCREMENT' }); }}></button>
+      onMouseEnter={() => { dispatch({ type: 'randomizeDimensions' }); }}></button>
     </div>
   );
 }
