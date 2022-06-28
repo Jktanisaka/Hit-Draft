@@ -9,11 +9,11 @@ div {
 }
 
 .x {
-  animation: x 13s linear infinite alternate;
+  animation: x 4s linear infinite alternate;
 }
 
 .y {
-  animation: y 7s linear infinite alternate;
+  animation: y 1s linear infinite alternate;
 }
 
 button {
