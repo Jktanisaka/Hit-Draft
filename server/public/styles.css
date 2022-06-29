@@ -2,10 +2,38 @@ body {
   margin: 0;
 }
 
-img,
-div {
-  width: 100px;
-  height: 100px;
+.l3-button {
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+
+.l3-button-hidden {
+  border: none !important;
+  background-color: white !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+
+.l3-button:hover {
+  text-decoration: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  cursor: default !important;
+  background-color: white !important;
+  transition: background-color 2s, border 3s, cursor 2s !important;
+}
+
+.l3-button:active {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.l3-button-transition {
+  color: white;
+}
+
+.full-height {
+  min-height: 100vh;
 }
 
 .x {
@@ -17,6 +45,7 @@ div {
 }
 
 button {
+  background-color: rgb(179, 179, 179);
   height: 100px;
   width: 100px;
 }
