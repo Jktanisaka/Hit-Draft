@@ -13,7 +13,7 @@ export default function Level2(props) {
           passedLevel: false,
           count: state.count + 1,
           topDimension: Math.random() * 500,
-          leftDimension: Math.random() * 1000
+          leftDimension: Math.random() * 1500
         };
       default:
         return state;

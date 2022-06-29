@@ -7,6 +7,20 @@ body {
   margin: 0 !important;
 }
 
+.asdf {
+  cursor: pointer;
+  border: 2px solid black;
+  height: 100px !important;
+  width: 100px !important;
+  background-color: rgb(179, 179, 179) !important;
+}
+
+.asdf:active {
+  height: 100vh !important;
+  width: 100% !important;
+  transition: height 2s, width 2s !important;
+}
+
 .l3-button {
   box-shadow: none !important;
   cursor: pointer !important;
@@ -46,17 +60,13 @@ body {
 }
 
 .y {
-  animation: y 1s linear infinite alternate;
+  animation: y 2s linear infinite alternate;
 }
 
 button {
   background-color: rgb(179, 179, 179);
   height: 100px;
   width: 100px;
-}
-
-button:hover {
-  left: (math.random);
 }
 
 @keyframes x {
