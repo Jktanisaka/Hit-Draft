@@ -5,9 +5,12 @@ export default function Level2(props) {
   const reducer = (state, action) => {
     switch (action.type) {
       case 'passedLevel':
-        return <Level3 />;
+        return {
+          passedLevel: true
+        };
       case 'randomizeDimensions':
         return {
+          passedLevel: false,
           count: state.count + 1,
           topDimension: Math.random() * 1000,
           leftDimension: Math.random() * 1000
@@ -23,6 +26,9 @@ export default function Level2(props) {
       leftDimension: 100
     });
 
+  if (state.passedLevel === true) {
+    return <Level3 />;
+  }
   if (state.count === 6) {
     return (
       <div style={{ position: 'relative' }}>
