@@ -2,6 +2,11 @@ body {
   margin: 0;
 }
 
+.disappearing-cursor {
+  cursor: none !important;
+  margin: 0 !important;
+}
+
 .l3-button {
   box-shadow: none !important;
   cursor: pointer !important;
