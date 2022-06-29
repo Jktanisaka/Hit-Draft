@@ -28,7 +28,7 @@ export default function Level3(props) {
   if (state.hoveredButton === true) {
     return (
       <div className="container">
-        <div className='row justify-content-end align-items-center full-height shadow-none'>
+        <div className='row justify-content-end align-items-center full-height'>
           <button style={{ height: 100, width: 100 }} className="l3-button-hidden shadow-none" onClick={() => { dispatch({ type: 'passedLevel' }); }} ></button>
         </div>
       </div>
@@ -36,7 +36,7 @@ export default function Level3(props) {
   }
   return (
     <div className="container">
-      <div className='row justify-content-center align-items-center full-height shadow-none'>
+      <div className='row justify-content-center align-items-center full-height'>
         <button style={{ height: 100, width: 100 }} className="l3-button shadow-none" onMouseLeave={ () => { dispatch({ type: 'hoveredButton' }); }} ></button>
       </div>
     </div>
