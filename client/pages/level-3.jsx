@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import Level4 from './level-4';
+import { Link } from 'react-router-dom';
 
 export default function Level3(props) {
   const reducer = (state, action) => {
@@ -22,14 +22,12 @@ export default function Level3(props) {
       hoveredButton: false,
       passedLevel: false
     });
-  if (state.passedLevel === true) {
-    return <Level4 />;
-  }
+
   if (state.hoveredButton === true) {
     return (
       <div className="container">
         <div className='row justify-content-end align-items-center full-height'>
-          <button style={{ height: 100, width: 100 }} className="l3-button-hidden shadow-none" onClick={() => { dispatch({ type: 'passedLevel' }); }} ></button>
+           <Link className='gray-square l3-button-hidden' to="/level4" />
         </div>
       </div>
     );
