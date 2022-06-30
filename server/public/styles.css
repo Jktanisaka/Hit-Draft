@@ -21,6 +21,13 @@ body {
   transition: height 2s, width 2s !important;
 }
 
+.final {
+  height: 100vh;
+  width: 100vh;
+  background-color: rgb(179, 179, 179);
+  border: 2px solid black;
+}
+
 .l3-button {
   box-shadow: none !important;
   cursor: pointer !important;
@@ -60,7 +67,7 @@ body {
 }
 
 .y {
-  animation: y 2s linear infinite alternate;
+  animation: y 2.5s linear infinite alternate;
 }
 
 button {
