@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
-import Level5 from './level-5';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Level4(props) {
-  const [passed, setPassed] = useState(false);
-  const increment = () => {
-    setPassed(!passed);
-  };
-  if (passed === true) {
-    return <Level5 />;
-  }
+
   return (
     <div className="disappearing-cursor container-fluid">
       <div className='row justify-content-start align-items-center full-height m-0'>
-        <button style={{ height: 100, width: 100 }} onClick={ increment } className="m-5"></button>
+        <Link style={{ height: 100, width: 100 }} className="gray-square m-5" to="/level5" />
       </div>
     </div>
   );

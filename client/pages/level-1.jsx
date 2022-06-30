@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
-import Level2 from './level-2';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Level1(Props) {
-  const [counter, setCounter] = useState(false);
-  const increment = () => {
-    setCounter(!counter);
-  };
-
-  if (counter === true) {
-    return <Level2 />;
-  }
   return (
   <div className="x">
-      <button className="y" onClick={increment}></button>
+      <Link className="y gray-square" to="/level2" />
   </div>
   );
 }

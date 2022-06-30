@@ -1,10 +1,20 @@
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 .disappearing-cursor {
   cursor: none !important;
   margin: 0 !important;
+}
+
+.gray-square {
+  margin: none !important;
+  display: block;
+  height: 100px !important;
+  width: 100px !important;
+  background-color: rgb(179, 179, 179);
+  border: 2px solid black;
 }
 
 .asdf {
@@ -67,7 +77,7 @@ body {
 }
 
 .y {
-  animation: y 2.5s linear infinite alternate;
+  animation: y 1s linear infinite alternate;
 }
 
 button {
