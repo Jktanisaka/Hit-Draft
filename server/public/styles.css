@@ -3,6 +3,11 @@ body {
   overflow: hidden;
 }
 
+.a-special {
+  height: 100px !important;
+  width: 100px !important;
+}
+
 .disappearing-cursor {
   cursor: none !important;
   margin: 0 !important;
@@ -10,7 +15,7 @@ body {
 
 .gray-square {
   margin: none !important;
-  display: block;
+  display: block !important;
   height: 100px !important;
   width: 100px !important;
   background-color: rgb(179, 179, 179);
