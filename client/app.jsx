@@ -7,6 +7,27 @@ import Level5 from './pages/level-5';
 import { BrowserRouter as Router, Routes as Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.componentDidMount = this.componentDidMount.bind(this);
+    // this.stopTimer = this.stopTimer.bind(this);
+    this.state = {
+      timer: 0
+    };
+  }
+
+  componentDidMount(props) {
+    setInterval(() => {
+      this.setState({ timer: this.state.timer + 1 });
+      // console.log(this.state.timer);
+    }, 1000);
+  }
+
+  // stopTimer(props) {
+  //   console.log(this.state.timer);
+  //   clearInterval(intervalID);
+  // }
+
   render() {
     return (
       <Router>
