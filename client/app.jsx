@@ -11,15 +11,11 @@ export default class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" element={<Level1/>} />
+          <Route path="/" element={<Level1/>} />
           <Route path="/level2" element={<Level2 />} />
-
           <Route path="/level3" element={<Level3 />} />
-
           <Route path="/level4" element={<Level4 />} />
-
           <Route path="/level5" element={<Level5 />} />
-
         </Switch>
       </Router>
     );
