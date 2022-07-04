@@ -6,9 +6,11 @@ export default function Level5(props) {
     setPassed(!passed);
   };
   if (passed === true) {
+    props.stopTimer();
+    const time = props.timer / 100;
     return (
       <div className="container-fluid p-0 final">
-
+        <h1 className='col-12 d-flex justify-content-center align-items-center h-100'>{`Time: ${time} seconds`}</h1>
       </div>
     );
   }
