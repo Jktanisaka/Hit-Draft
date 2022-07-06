@@ -25,7 +25,7 @@ export default class App extends React.Component {
     }, 10);
   }
 
-  stopTimer(props) {
+  stopTimer() {
     clearInterval(this.state.intervalID);
   }
 

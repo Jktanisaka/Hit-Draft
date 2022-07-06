@@ -3,11 +3,6 @@ body {
   overflow: hidden;
 }
 
-.a-special {
-  height: 100px !important;
-  width: 100px !important;
-}
-
 .disappearing-cursor {
   cursor: none !important;
   margin: 0 !important;
@@ -15,14 +10,14 @@ body {
 
 .gray-square {
   margin: none !important;
-  display: block !important;
+  display: block;
   height: 100px !important;
   width: 100px !important;
   background-color: rgb(179, 179, 179);
   border: 2px solid black;
 }
 
-.asdf {
+.l5-button {
   cursor: pointer;
   border: 2px solid black;
   height: 100px !important;
@@ -30,7 +25,7 @@ body {
   background-color: rgb(179, 179, 179) !important;
 }
 
-.asdf:active {
+.l5-button:active {
   height: 100vh !important;
   width: 100% !important;
   transition: height 2s, width 2s !important;
@@ -45,23 +40,16 @@ body {
 
 .l3-button {
   box-shadow: none !important;
-  cursor: pointer !important;
+  opacity: 1 !important;
 }
 
 .l3-button-hidden {
+  height: 300px;
+  width: 300px;
   border: none !important;
   background-color: white !important;
   box-shadow: none !important;
   cursor: pointer !important;
-}
-
-.l3-button:hover {
-  text-decoration: none !important;
-  box-shadow: none !important;
-  border: none !important;
-  cursor: default !important;
-  background-color: white !important;
-  transition: background-color 2s, border 3s, cursor 2s !important;
 }
 
 .l3-button:active {
@@ -75,6 +63,12 @@ body {
 
 .full-height {
   min-height: 100vh;
+}
+
+.fade-out {
+  animation-duration: 2s;
+  animation-name: fade-out;
+  animation-fill-mode: forwards !important;
 }
 
 .x {
@@ -112,5 +106,15 @@ button {
 @keyframes y {
   100% {
     transform: translateY(calc(100vh - 100px));
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }

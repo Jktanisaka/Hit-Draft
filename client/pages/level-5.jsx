@@ -17,7 +17,7 @@ export default function Level5(props) {
   return (
   <div className="container-fluid p-0">
     <div className='row justify-content-center align-items-center full-height m-0 p-0'>
-      <a className= "asdf" onMouseUp={increment}></a>
+      <a className= "l5-button" onClick={increment}></a>
     </div>
   </div>);
 }
