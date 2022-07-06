@@ -25,19 +25,6 @@ body {
   background-color: rgb(179, 179, 179) !important;
 }
 
-.l5-button:active {
-  height: 100vh !important;
-  width: 100% !important;
-  transition: height 2s, width 2s !important;
-}
-
-.final {
-  height: 100vh;
-  width: 100vh;
-  background-color: rgb(179, 179, 179);
-  border: 2px solid black;
-}
-
 .l3-button {
   box-shadow: none !important;
   opacity: 1 !important;
@@ -65,9 +52,19 @@ body {
   min-height: 100vh;
 }
 
+.full-width {
+  min-width: 100vh !important;
+}
+
 .fade-out {
   animation-duration: 2s;
   animation-name: fade-out;
+  animation-fill-mode: forwards !important;
+}
+
+.expand {
+  animation-duration: 3s;
+  animation-name: expand;
   animation-fill-mode: forwards !important;
 }
 
@@ -116,5 +113,21 @@ button {
 
   to {
     opacity: 0;
+  }
+}
+
+@keyframes expand {
+  from {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(179, 179, 179);
+    border: 2px solid black;
+  }
+
+  to {
+    height: 100vh;
+    min-width: 100vh;
+    background-color: rgb(179, 179, 179);
+    border: 2px solid black;
   }
 }
