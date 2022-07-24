@@ -1,5 +1,5 @@
 import React from 'react';
-// import _ from 'lodash';
+import _ from 'lodash';
 export default class Race extends React.Component {
   constructor(props) {
     super(props);
@@ -8,13 +8,34 @@ export default class Race extends React.Component {
     this.nameEnter = this.nameEnter.bind(this);
     this.state = {
       players: [],
-      winners: []
+      winners: [],
+      numberOfPlayers: 0
 
     };
   }
 
   onStart(props) {
-    // console.log(_.sample(this.state.players));
+    const intervalID = setInterval(
+      () => {
+        const copyPlayerArr = [...this.state.players];
+        const copyWinnersArr = [...this.state.winners];
+        const comparativePlayerArr = [];
+        for (let i = 0; i < copyPlayerArr.length; i++) {
+          if (copyPlayerArr[i].left < window.innerWidth - 200) {
+            comparativePlayerArr.push(copyPlayerArr[i]);
+          }
+        }
+        const randomPlayer = _.sample(comparativePlayerArr);
+        randomPlayer.left = randomPlayer.left + 100;
+        if (randomPlayer.left > window.innerWidth - 200) {
+          copyWinnersArr.push(randomPlayer);
+        }
+        this.setState({ players: comparativePlayerArr });
+        this.setState({ winners: copyWinnersArr });
+        this.setState({ intervalID });
+      }, 1000
+    );
+
   }
 
   selectChangeHandler(event) {
@@ -22,16 +43,19 @@ export default class Race extends React.Component {
     const players = [];
     for (let i = 0; i < event.target.value; i++) {
       players.push({ player: i + 1, left: 100, height: 0, color: colors[i], name: '' });
+
     }
     this.setState({ players });
-    // console.log(players);
+    this.setState({ numberOfPlayers: event.target.value });
   }
 
   nameEnter(event) {
-    // console.log;
   }
 
   render(props) {
+    if (parseInt(this.state.winners.length) === parseInt(this.state.numberOfPlayers)) {
+      clearInterval(this.state.intervalID);
+    }
     return (
       <div className='container-fluid row justify-content-center m-0'>
         <form>
@@ -51,7 +75,7 @@ export default class Race extends React.Component {
           {
             this.state.players.map((player, index) => (
               <div key={index} className='position-relative track m-3'>
-                <input require style={{ width: 100 }} onChange={this.nameEnter}></input>
+                <input style={{ width: 100 }} onChange={this.nameEnter}></input>
                 <i className='fa-solid fa-dog position-absolute' style={{ height: player.height, width: 100, fontSize: 38, color: player.color, left: player.left }}>
                 </i>
               </div>
