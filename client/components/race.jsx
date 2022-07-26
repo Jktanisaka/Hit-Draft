@@ -60,37 +60,36 @@ export default class Race extends React.Component {
   render(props) {
     if (parseInt(this.state.winners.length) === parseInt(this.state.numberOfPlayers)) {
       clearInterval(this.state.intervalID);
+      return (
+        <div className='d-flex justify-content-evenly align-items-center'>
+          {
+            this.state.winners.map((player, index) => (
+              <div key={index} className='col-2 d-flex flex-column' style={{ animation: `fade-in ${index + 1}s` }} >
+                <p className='text-center' style={{ fontSize: 20 }}>{player.name}(#{index + 1})</p>
+                <form className='row justify-content-center'>
+                  <input style={{ width: '80%' }} placeholder="1st Pick"></input>
+                  <input style={{ width: '80%' }} placeholder="2nd Pick"></input>
+                  <input style={{ width: '80%' }} placeholder="3rd Pick"></input>
+                  <input style={{ width: '80%' }} placeholder="4th Pick"></input>
+                  <input style={{ width: '80%' }} placeholder="5th Pick"></input>
+                  <input style={{ width: '80%' }} placeholder="6th Pick"></input>
+                  <input style={{ width: '80%' }} placeholder="7th Pick"></input>
+                  <input style={{ width: '80%' }} placeholder="8th Pick"></input>
+                  <input style={{ width: '80%' }} placeholder="9th Pick"></input>
+                  <input style={{ width: '80%' }} placeholder="10th Pick"></input>
+                  <textarea style={{ width: '80%' }} placeholder='Additional Notes'></textarea>
+                </form>
+              </div>
+
+            ))
+          }
+
+        </div>
+      );
     }
-    //   return (
-    //     <div className='d-flex justify-content-evenly'>
-    //       {
-    //         this.state.winners.map((player, index) => (
-    //           <div key={index} className='col-2 d-flex flex-column'>
-    //             <p className='text-center' style={{ fontSize: 20 }}>{player.name}(#{index + 1})</p>
-    //             <form className='row justify-content-center'>
-    //               <input style={{ width: '80%' }} placeholder="1st Pick"></input>
-    //               <input style={{ width: '80%' }} placeholder="2nd Pick"></input>
-    //               <input style={{ width: '80%' }} placeholder="3rd Pick"></input>
-    //               <input style={{ width: '80%' }} placeholder="4th Pick"></input>
-    //               <input style={{ width: '80%' }} placeholder="5th Pick"></input>
-    //               <input style={{ width: '80%' }} placeholder="6th Pick"></input>
-    //               <input style={{ width: '80%' }} placeholder="7th Pick"></input>
-    //               <input style={{ width: '80%' }} placeholder="8th Pick"></input>
-    //               <input style={{ width: '80%' }} placeholder="9th Pick"></input>
-    //               <input style={{ width: '80%' }} placeholder="10th Pick"></input>
-    //               <textarea style={{ width: '80%' }} placeholder='Additional Notes'></textarea>
-    //             </form>
-    //           </div>
-
-    //         ))
-    //       }
-
-    //     </div>
-    //   );
-    // }
     return (
       <>
-      <div className='container-fluid row justify-content-center m-0'>
+      <div className='container-fluid row justify-content-center align-items-center m-0'>
         <form className='d-flex flex-column justify-content-center align-items-center'>
           <label htmlFor="players">Number of Players</label>
           <select id='players' onChange={this.selectChangeHandler} className='w-25 form-control col-4'>
@@ -108,16 +107,15 @@ export default class Race extends React.Component {
         <div className='race-track p-3 pt-0' >
           {
             this.state.players.map((player, index) => (
-              <div key={index} className='position-relative track m-3'>
+              <div key={index} className='position-relative track m-3 winner-card'>
                 <input index={index} style={{ width: 100, border: `2px solid ${player.color}` }} value={player.name} onChange={this.nameEnter} ></input>
-                <i className='fa-solid fa-dog position-absolute' style={{ height: player.height, width: 100, fontSize: 38, color: player.color, left: player.left }}>
-                </i>
+                <i className='fa-solid fa-dog position-absolute' style={{ height: player.height, width: 100, fontSize: 38, color: player.color, left: player.left }}></i>
                 <div className='position-absolute ' style={{ top: 0, left: window.innerWidth - 200, border: '1px solid black', height: 50 }}></div>
               </div>
             ))
           }
         </div>
-        <button className='col-4 btn btn-primary mt-5' type='submit' onClick={this.onStart}>Start Race</button>
+        <button className='col-4 btn btn-primary' type='submit' onClick={this.onStart}>Start Race</button>
       </div>
 
       </>
