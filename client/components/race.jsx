@@ -96,8 +96,8 @@ export default class Race extends React.Component {
       <div className='container-fluid row justify-content-center align-items-center m-0'>
         <form className='d-flex flex-column justify-content-center align-items-center'>
           <label htmlFor="players" style={{ fontSize: 28 }} className='m-3'>Number of Players</label>
-          <select id='players' onChange={this.selectChangeHandler} className='w-25 form-control col-4 text-muted'>
-            <option value='' className='text-muted' selected disabled >How many people are drafting?</option>
+          <select id='players' onChange={this.selectChangeHandler} defaultValue = ''className='w-25 form-control col-4 text-muted'>
+            <option value='' className='text-muted' disabled >How many people are drafting?</option>
             <option value="2" className='text-black'>2</option>
             <option value="3" className='text-black'>3</option>
             <option value="4" className='text-black'>4</option>
