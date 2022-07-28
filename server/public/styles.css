@@ -28,7 +28,7 @@ body {
 
 @keyframes fade-in {
   from {
-    transform: translate3d(0, -20%, 0);
+    transform: translate3d(0, -50%, 0);
   }
 
   to {
