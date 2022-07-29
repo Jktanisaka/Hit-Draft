@@ -9,14 +9,14 @@ export default class Race extends React.Component {
     this.nameEnter = this.nameEnter.bind(this);
     this.state = {
       players: [],
-      winners: [0],
-      numberOfPlayers: 0
-
+      winners: [['Name', '1st Pick', '2nd Pick', '3rd Pick', '4th Pick', '5th Pick', '6th Pick', '7th Pick', '8th Pick', '9th Pick', '10th Pick', 'Additional Notes']],
+      numberOfPlayers: 0,
+      numberOfWinners: 0
     };
   }
 
   onStart(props) {
-    this.setState({ winners: [] });
+    this.setState({ winners: [['Name', '1st Pick', '2nd Pick', '3rd Pick', '4th Pick', '5th Pick', '6th Pick', '7th Pick', '8th Pick', '9th Pick', '10th Pick', 'Additional Notes']] });
     const intervalID = setInterval(
       () => {
         const copyPlayerArr = [...this.state.players];
@@ -30,7 +30,8 @@ export default class Race extends React.Component {
         const randomPlayer = _.sample(comparativePlayerArr);
         randomPlayer.left = randomPlayer.left + 100;
         if (randomPlayer.left > window.innerWidth - 200) {
-          copyWinnersArr.push(randomPlayer);
+          copyWinnersArr.push([randomPlayer.name, '', '', '', '', '', '', '', '', '', '', '']);
+          this.setState({ numberOfWinners: this.state.numberOfWinners + 1 });
         }
         this.setState({ players: comparativePlayerArr });
         this.setState({ winners: copyWinnersArr });
@@ -59,38 +60,11 @@ export default class Race extends React.Component {
   }
 
   render(props) {
-
-    if (parseInt(this.state.winners.length) === parseInt(this.state.numberOfPlayers)) {
+    if (this.state.numberOfWinners !== 0 && parseInt(this.state.numberOfWinners) === parseInt(this.state.numberOfPlayers)) {
       clearInterval(this.state.intervalID);
-      // const winners = this.state.winners.length;
       return <Navigate to='/results' state={this.state.winners} />;
-      // return (
-      //   <div className='d-flex justify-content-evenly align-items-center'>
-      //     {
-      //       this.state.winners.map((player, index) => (
-      //         <div key={index} className='col-2 d-flex flex-column ' style={{ backgroundColor: 'white', border: `2px solid ${player.color}`, animation: `fade-in ${index + 1}s` }} >
-      //           <p className='text-center m-2' style={{ fontSize: 20 }}>{player.name}(#{index + 1})</p>
-      //           <form className='row justify-content-center mb-3'>
-      //             <input className='mb-1'style={{ width: '80%' }} tabIndex={parseInt(index + 1)} placeholder='1st Pick'></input>
-      //             <input className='mb-1' style={{ width: '80%' }} tabIndex={(2 * winners) - parseInt(index)} placeholder='2nd Pick'></input>
-      //             <input className='mb-1' style={{ width: '80%' }} tabIndex={(3 - 1) * winners + index + 1} placeholder="3rd Pick"></input>
-      //             <input className='mb-1' style={{ width: '80%' }} tabIndex={(4 * winners) - parseInt(index)} placeholder='4th Pick'></input>
-      //             <input className='mb-1' style={{ width: '80%' }} tabIndex={(5 - 1) * winners + index + 1} placeholder="5th Pick"></input>
-      //             <input className='mb-1' style={{ width: '80%' }} tabIndex={(6 * winners) - parseInt(index)} placeholder='6th Pick'></input>
-      //             <input className='mb-1' style={{ width: '80%' }} tabIndex={(7 - 1) * winners + index + 1} placeholder="7th Pick"></input>
-      //             <input className='mb-1' style={{ width: '80%' }} tabIndex={(8 * winners) - parseInt(index)} placeholder="8th Pick"></input>
-      //             <input className='mb-1' style={{ width: '80%' }} tabIndex={(9 - 1) * winners + index + 1} placeholder="9th Pick"></input>
-      //             <input className='mb-1' style={{ width: '80%' }} tabIndex={(10 * winners) - parseInt(index)} placeholder="10th Pick"></input>
-      //             <textarea style={{ width: '80%' }} placeholder='Additional Notes'></textarea>
-      //           </form>
-      //         </div>
-
-      //       ))
-      //     }
-
-      //   </div>
-      // );
     }
+
     return (
       <>
       <div className='container-fluid row justify-content-center align-items-center m-0'>
