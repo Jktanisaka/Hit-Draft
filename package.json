@@ -8,7 +8,7 @@
     "start": "NODE_ENV=production node .",
     "dev": "NODE_ENV=development nodemon .",
     "build": "NODE_ENV=production webpack",
-    "db:import": "sh database/import.sh",
+    "db:import": "",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "lodash": "^4.17.21",
     "pg": "^8.7.3",
     "react": "^18.2.0",
+    "react-beforeunload": "^2.5.3",
     "react-bootstrap": "^2.4.0",
     "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",
