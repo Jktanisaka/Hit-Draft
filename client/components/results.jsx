@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CSVLink } from 'react-csv';
+import { useBeforeunload } from 'react-beforeunload';
 export default function Results(props) {
   const { state } = useLocation();
   const winners = state.length;
@@ -16,6 +17,17 @@ export default function Results(props) {
   //   setPicks(duplicatePicks);
 
   // }, []);
+  useBeforeunload(event => {
+
+    localStorage.setItem('winners', JSON.stringify(picks));
+  });
+
+  useEffect(() => {
+    const winners = JSON.parse(localStorage.getItem('winners'));
+    if (winners) {
+      setPicks(winners);
+    }
+  }, []);
 
   const onChange = event => {
     const stateCopy = [...picks];

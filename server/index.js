@@ -12,6 +12,12 @@ if (process.env.NODE_ENV === 'development') {
   app.use(express.static(publicPath));
 }
 
+app.use((req, res) => {
+  res.sendFile('/index.html', {
+    root: path.join(__dirname, 'public')
+  });
+});
+
 app.get('/api/hello', (req, res) => {
   res.json({ hello: 'world' });
 });
