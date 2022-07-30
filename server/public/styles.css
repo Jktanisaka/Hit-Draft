@@ -18,6 +18,14 @@
   align-items: center;
 }
 
+form:focus-within {
+  outline-style: dotted;
+}
+
+.focused {
+  background-color: black;
+}
+
 .header:hover {
   cursor: default;
 }
