@@ -12,6 +12,7 @@ A hit draft (sometimes known as a group break) is when multiple people buy in to
 4. Once the draft is filled out, the draft can be named and saved as a CSV file
 
 ## Additional features
+- Hitting tab on the results page will focus to the next box in snake order
 - Draft will save values upon page reload
 - User can only start a new race by clicking the "start a new draft" button
 - If the page is reloaded, the default behavior is to display any existing draft
