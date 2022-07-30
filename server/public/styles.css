@@ -18,12 +18,14 @@
   align-items: center;
 }
 
-form:focus-within {
-  outline-style: dotted;
+.focused:focus-within {
+  border-radius: 5px;
+  box-shadow: 0 0  5px black;
+  transition: box-shadow 0.5s ease;
 }
 
-.focused {
-  background-color: black;
+i {
+  transition: x;
 }
 
 .header:hover {

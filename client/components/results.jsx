@@ -53,10 +53,10 @@ export default function Results(props) {
 
   return (
     <>
-    <div className='d-flex justify-content-evenly align-items-center'>
+    <div className='d-flex justify-content-evenly align-items-center ms-2 me-2'>
            {
             picks.slice(1).map((player, index) => {
-              return (<div key={index} className='col-2 d-flex flex-column ' style={{ backgroundColor: 'white', border: `2px solid ${player.color}`, animation: `fade-in ${index + 1}s` }} >
+              return (<div key={index} className='col-2 d-flex flex-column focused' style={{ border: 'white', animation: `fade-in ${parseInt(index)}s` }} >
                 <h3 className='text-center m-2' style={{ fontSize: 20, display: 'inline' }}>{player[0]}<p style={{ display: 'inline', fontSize: 14 }} className='text-muted'>(#{index + 1})</p></h3>
                 <form className='row justify-content-center mb-3'>
                   <input className='mb-1' style={{ width: '80%' }} tabIndex={parseInt(index + 1)} placeholder='1st Pick' onChange={onChange} data-index={1} player-index={index + 1} value={player[1]} onFocus={handleFocus}></input>
