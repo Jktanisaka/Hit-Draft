@@ -4,6 +4,7 @@ import { CSVLink } from 'react-csv';
 import { useBeforeunload } from 'react-beforeunload';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Footer from './footer';
 export default function Results(props) {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -106,6 +107,7 @@ export default function Results(props) {
           <CSVLink data={picks} filename={fileName} className='btn btn-success me-2'>Download CSV<i className='fa-solid fa-file-arrow-down ms-2'></i></CSVLink>
         </Modal.Footer>
       </Modal>
+      <Footer />
       </>
   );
 }
