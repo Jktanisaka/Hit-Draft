@@ -28,6 +28,10 @@ i {
   cursor: default;
 }
 
+li {
+  list-style: none;
+}
+
 @keyframes fade-in {
   from {
     transform: translate3d(0, -50%, 0);
