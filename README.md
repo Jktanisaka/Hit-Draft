@@ -16,4 +16,6 @@ A hit draft (sometimes known as a group break) is when multiple people buy in to
 - Draft will save values upon page reload
 - User can only start a new race by clicking the "start a new draft" button
 - If the page is reloaded, the default behavior is to display any existing draft
+
+
 ![HitDraft](https://user-images.githubusercontent.com/96153171/182049472-b14d343f-7e1a-4cc8-aba3-f5ec815dd240.gif)
