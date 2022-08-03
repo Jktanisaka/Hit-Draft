@@ -26,14 +26,14 @@ export default class Race extends React.Component {
         const copyWinnersArr = [...this.state.winners];
         const comparativePlayerArr = [];
         for (let i = 0; i < copyPlayerArr.length; i++) {
-          if (copyPlayerArr[i].left < trackWidth - 200) {
+          if (copyPlayerArr[i].left < trackWidth * 0.85) {
             comparativePlayerArr.push(copyPlayerArr[i]);
           }
         }
         const randomPlayer = _.sample(comparativePlayerArr);
         randomPlayer.left = randomPlayer.left + 100;
 
-        if (randomPlayer.left > trackWidth - 199) {
+        if (randomPlayer.left > trackWidth * 0.85) {
           copyWinnersArr.push([randomPlayer.name, '', '', '', '', '', '', '', '', '', '', '']);
           this.setState({ numberOfWinners: this.state.numberOfWinners + 1 });
         }
@@ -98,7 +98,7 @@ export default class Race extends React.Component {
               <div key={index} className='position-relative track m-3' style={{ animation: `animate-fade ${(index / 2)}s ease-in` }}>
                 <input index={index} style={{ width: 100, border: `2px solid ${player.color}` }} value={player.name} onChange={this.nameEnter} ></input>
                 <i className='fa-solid fa-dog position-absolute' style={{ height: player.height, width: 100, fontSize: 38, color: player.color, left: player.left }}></i>
-                <div className='position-absolute ' style={{ top: 0, left: this.raceRef.current.clientWidth - 200, border: '1px solid black', height: 50 }}></div>
+                <div className='position-absolute ' style={{ top: 0, left: this.raceRef.current.clientWidth * 0.85, border: '1px solid black', height: 50 }}></div>
               </div>
             ))
           }
