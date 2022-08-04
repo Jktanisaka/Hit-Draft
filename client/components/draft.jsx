@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
+import Link from 'react-router-dom';
 export default function Draft(props) {
   const [numberOfDrafters, setNumberOfDrafters] = useState(0);
   const [drafters, setDrafters] = useState([]);
   const placeholderArr = ['First Pick', 'Second Pick', 'Third Pick', 'Fourth Pick', 'Fifth Pick', 'Sixth Pick', 'Seventh Pick', 'Eighth Pick'];
+
+  const nameChange = event => {
+    const targetIndex = parseInt(event.target.getAttribute('data-index'));
+    const copyDrafters = [...drafters];
+    copyDrafters[targetIndex][0] = event.target.value;
+    setDrafters(copyDrafters);
+  };
 
   const onChange = event => {
     setNumberOfDrafters(event.target.value);
@@ -11,7 +19,7 @@ export default function Draft(props) {
   const onConfirm = () => {
     const draftersArr = [];
     for (let i = 0; i < numberOfDrafters; i++) {
-      draftersArr.push({});
+      draftersArr.push(['', '', '', '', '', '', '', '', '', '', '', '']);
     }
     setDrafters(draftersArr);
   };
@@ -22,10 +30,11 @@ export default function Draft(props) {
       <form className='d-flex flex-column'>
       {
         drafters.map((players, index) => (
-          <input key={index} className='m-2' placeholder={placeholderArr[index]}></input>
+          <input key={index} className='m-2' placeholder={placeholderArr[index]} onChange={nameChange} data-index={index} value={drafters[index][0]}></input>
         ))
       }
       </form >
+      <Link className='btn btn-primary col-2 mt-2'> Submit</Link>
       </>
     );
   }
