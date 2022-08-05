@@ -105,7 +105,6 @@ export default class Race extends React.Component {
         </div>
         <button className='col-4 btn btn-primary' type='submit' onClick={this.onStart}>Start Race</button>
       </div>
-
       </>
     );
   }
