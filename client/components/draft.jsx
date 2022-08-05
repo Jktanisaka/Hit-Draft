@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 export default function Draft(props) {
   const [numberOfDrafters, setNumberOfDrafters] = useState(0);
   const [drafters, setDrafters] = useState([]);
@@ -23,18 +24,19 @@ export default function Draft(props) {
     }
     setDrafters(draftersArr);
   };
+
   if (drafters.length > 0) {
     return (
       <>
       <h3>Names</h3>
-      <form className='d-flex flex-column'>
+      <form className='d-flex flex-column col-2'>
       {
         drafters.map((players, index) => (
-          <input key={index} className='m-2' placeholder={placeholderArr[index]} onChange={nameChange} data-index={index} value={drafters[index][0]}></input>
+          <input key={index} className='mt-2 mb-2' placeholder={placeholderArr[index]} onChange={nameChange} data-index={index} value={drafters[index][0]}></input>
         ))
       }
       </form >
-      <Link className='btn btn-primary col-2 mt-2'> Submit</Link>
+      <Link className='btn btn-primary col-2 mt-2' to="/draft-results" state={{ drafters }}> Submit</Link>
       </>
     );
   }
