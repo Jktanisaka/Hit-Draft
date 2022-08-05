@@ -24,7 +24,7 @@ export default class App extends React.Component {
           <Route path='/' element={<Race />} />
           <Route path="/results" element={<Results />} />
           <Route path='/draft' element={<Draft />} />
-          <Route path='/draft-results' elements={<DraftResults />} />
+          <Route path='/draft-results' element={<DraftResults />} />
         </Switch>
       </Router>
       </>
