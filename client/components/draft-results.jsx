@@ -19,16 +19,24 @@ export default function DraftResults(props) {
   const fileNameChange = event => {
     setFileName(event.target.value);
   };
-
+  const onChange = event => {
+    const stateCopy = [...drafters];
+    const inputIndex = event.target.getAttribute('data-index');
+    const playerIndex = event.target.getAttribute('player-index');
+    stateCopy[playerIndex][inputIndex] = event.target.value;
+    setDrafters(stateCopy);
+  };
   const handleFocus = event => {
     const selectedDiv = event.target.closest('div');
     selectedDiv.classList.add('focused');
   };
 
   useEffect(() => {
-    const copyDrafters = [...drafters];
-    copyDrafters.unshift(['Name', '1st Pick', '2nd Pick', '3rd Pick', '4th Pick', '5th Pick', '6th Pick', '7th Pick', '8th Pick', '9th Pick', '10th Pick', 'Additional Notes']);
-    setDrafters(copyDrafters);
+    if (drafters[0][1] !== '1st Pick') {
+      const copyDrafters = [...drafters];
+      copyDrafters.unshift(['Name', '1st Pick', '2nd Pick', '3rd Pick', '4th Pick', '5th Pick', '6th Pick', '7th Pick', '8th Pick', '9th Pick', '10th Pick', 'Additional Notes']);
+      setDrafters(copyDrafters);
+    }
   }, []);
 
   return (
@@ -39,17 +47,17 @@ export default function DraftResults(props) {
            return (<div key={index} className=' d-flex flex-column focused' style={{ border: 'white', animation: `fade-in ${parseInt(index)}s`, minWidth: 'auto', overflowX: 'hidden' }} >
               <h3 className='text-center m-2' style={{ fontSize: 20, display: 'inline' }}>{player[0]}<p style={{ display: 'inline', fontSize: 14 }} className='text-muted'>(#{index + 1})</p></h3>
               <form className='row justify-content-center mb-3'>
-                <input className='mb-1' style={{ width: '80%' }} tabIndex={parseInt(index + 1)} placeholder='1st Pick' data-index={1} player-index={index + 1} value={player[1]} onFocus={handleFocus}></input>
-                <input className='mb-1' style={{ width: '80%' }} tabIndex={(2 * winners) - parseInt(index)} placeholder='2nd Pick' data-index={2} player-index={index + 1} value={player[2]} onFocus={handleFocus} ></input>
-                <input className='mb-1' style={{ width: '80%' }} tabIndex={(3 - 1) * winners + index + 1} placeholder="3rd Pick" data-index={3} player-index={index + 1} value={player[3]} onFocus={handleFocus}></input>
-                <input className='mb-1' style={{ width: '80%' }} tabIndex={(4 * winners) - parseInt(index)} placeholder='4th Pick' data-index={4} player-index={index + 1} value={player[4]} onFocus={handleFocus}></input>
-                <input className='mb-1' style={{ width: '80%' }} tabIndex={(5 - 1) * winners + index + 1} placeholder="5th Pick" data-index={5} player-index={index + 1} value={player[5]} onFocus={handleFocus}></input>
-                <input className='mb-1' style={{ width: '80%' }} tabIndex={(6 * winners) - parseInt(index)} placeholder='6th Pick' data-index={6} player-index={index + 1} value={player[6]} onFocus={handleFocus}></input>
-                <input className='mb-1' style={{ width: '80%' }} tabIndex={(7 - 1) * winners + index + 1} placeholder="7th Pick" data-index={7} player-index={index + 1} value={player[7]} onFocus={handleFocus}></input>
-                <input className='mb-1' style={{ width: '80%' }} tabIndex={(8 * winners) - parseInt(index)} placeholder="8th Pick" data-index={8} player-index={index + 1} value={player[8]} onFocus={handleFocus}></input>
-                <input className='mb-1' style={{ width: '80%' }} tabIndex={(9 - 1) * winners + index + 1} placeholder="9th Pick" data-index={9} player-index={index + 1} value={player[9]} onFocus={handleFocus}></input>
-                <input className='mb-1' style={{ width: '80%' }} tabIndex={(10 * winners) - parseInt(index)} placeholder="10th Pick" data-index={10} player-index={index + 1} value={player[10]} onFocus={handleFocus}></input>
-                <textarea style={{ width: '80%' }} rows="8" placeholder='Additional Notes' data-index={11} player-index={index + 1} value={player[11]} onFocus={handleFocus}></textarea>
+                <input className='mb-1' style={{ width: '80%' }} tabIndex={parseInt(index + 1)} placeholder='1st Pick' data-index={1} player-index={index + 1} value={player[1]} onFocus={handleFocus} onChange={onChange}></input>
+               <input className='mb-1' style={{ width: '80%' }} tabIndex={(2 * winners) - parseInt(index)} placeholder='2nd Pick' data-index={2} player-index={index + 1} value={player[2]} onFocus={handleFocus} onChange={onChange} ></input>
+               <input className='mb-1' style={{ width: '80%' }} tabIndex={(3 - 1) * winners + index + 1} placeholder="3rd Pick" data-index={3} player-index={index + 1} value={player[3]} onFocus={handleFocus} onChange={onChange}></input>
+               <input className='mb-1' style={{ width: '80%' }} tabIndex={(4 * winners) - parseInt(index)} placeholder='4th Pick' data-index={4} player-index={index + 1} value={player[4]} onFocus={handleFocus} onChange={onChange}></input>
+               <input className='mb-1' style={{ width: '80%' }} tabIndex={(5 - 1) * winners + index + 1} placeholder="5th Pick" data-index={5} player-index={index + 1} value={player[5]} onFocus={handleFocus} onChange={onChange}></input>
+               <input className='mb-1' style={{ width: '80%' }} tabIndex={(6 * winners) - parseInt(index)} placeholder='6th Pick' data-index={6} player-index={index + 1} value={player[6]} onFocus={handleFocus} onChange={onChange}></input>
+               <input className='mb-1' style={{ width: '80%' }} tabIndex={(7 - 1) * winners + index + 1} placeholder="7th Pick" data-index={7} player-index={index + 1} value={player[7]} onFocus={handleFocus} onChange={onChange}></input>
+               <input className='mb-1' style={{ width: '80%' }} tabIndex={(8 * winners) - parseInt(index)} placeholder="8th Pick" data-index={8} player-index={index + 1} value={player[8]} onFocus={handleFocus} onChange={onChange}></input>
+               <input className='mb-1' style={{ width: '80%' }} tabIndex={(9 - 1) * winners + index + 1} placeholder="9th Pick" data-index={9} player-index={index + 1} value={player[9]} onFocus={handleFocus} onChange={onChange}></input>
+               <input className='mb-1' style={{ width: '80%' }} tabIndex={(10 * winners) - parseInt(index)} placeholder="10th Pick" data-index={10} player-index={index + 1} value={player[10]} onFocus={handleFocus} onChange={onChange}></input>
+               <textarea style={{ width: '80%' }} rows="8" placeholder='Additional Notes' data-index={11} player-index={index + 1} value={player[11]} onFocus={handleFocus} onChange={onChange}></textarea>
               </form>
             </div>);
          })
