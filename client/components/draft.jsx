@@ -18,25 +18,25 @@ export default function Draft(props) {
   };
 
   const onConfirm = () => {
-    const draftersArr = [];
+    const draftersArr = [['Name', '1st Pick', '2nd Pick', '3rd Pick', '4th Pick', '5th Pick', '6th Pick', '7th Pick', '8th Pick', '9th Pick', '10th Pick', 'Additional Notes']];
     for (let i = 0; i < numberOfDrafters; i++) {
       draftersArr.push(['', '', '', '', '', '', '', '', '', '', '', '']);
     }
     setDrafters(draftersArr);
   };
 
-  if (drafters.length > 0) {
+  if (drafters.length > 1) {
     return (
       <>
       <h3>Names</h3>
       <form className='d-flex flex-column col-2'>
       {
-        drafters.map((players, index) => (
-          <input key={index} className='mt-2 mb-2' placeholder={placeholderArr[index]} onChange={nameChange} data-index={index} value={drafters[index][0]}></input>
+        drafters.slice(1).map((players, index) => (
+          <input key={index} className='mt-2 mb-2' placeholder={placeholderArr[index]} onChange={nameChange} data-index={index + 1} value={drafters[index + 1][0]}></input>
         ))
       }
       </form >
-      <Link className='btn btn-primary col-2 mt-2' to="/draft-results" state={{ drafters }}> Submit</Link>
+      <Link className='btn btn-primary col-2 mt-2' to="/draft-results" state={{ drafters }} > Submit</Link>
       </>
     );
   }

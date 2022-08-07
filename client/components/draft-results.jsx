@@ -4,6 +4,8 @@ import { CSVLink } from 'react-csv';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Footer from './footer';
+import { useBeforeunload } from 'react-beforeunload';
+
 export default function DraftResults(props) {
   const [fileName, setFileName] = useState('');
 
@@ -16,9 +18,14 @@ export default function DraftResults(props) {
 
   const winners = drafters.length;
 
+  useBeforeunload(event => {
+    localStorage.setItem('draftResults', JSON.stringify(drafters));
+  });
+
   const fileNameChange = event => {
     setFileName(event.target.value);
   };
+
   const onChange = event => {
     const stateCopy = [...drafters];
     const inputIndex = event.target.getAttribute('data-index');
@@ -26,16 +33,16 @@ export default function DraftResults(props) {
     stateCopy[playerIndex][inputIndex] = event.target.value;
     setDrafters(stateCopy);
   };
+
   const handleFocus = event => {
     const selectedDiv = event.target.closest('div');
     selectedDiv.classList.add('focused');
   };
 
   useEffect(() => {
-    if (drafters[0][1] !== '1st Pick') {
-      const copyDrafters = [...drafters];
-      copyDrafters.unshift(['Name', '1st Pick', '2nd Pick', '3rd Pick', '4th Pick', '5th Pick', '6th Pick', '7th Pick', '8th Pick', '9th Pick', '10th Pick', 'Additional Notes']);
-      setDrafters(copyDrafters);
+    const storedDrafters = JSON.parse(localStorage.getItem('draftResults'));
+    if (storedDrafters) {
+      setDrafters(storedDrafters);
     }
   }, []);
 
@@ -77,7 +84,7 @@ export default function DraftResults(props) {
           </Button>
           <CSVLink data={drafters} filename={fileName} className='btn btn-success me-2'>Download CSV<i className='fa-solid fa-file-arrow-down ms-2'></i></CSVLink>
         </Modal.Footer>
-      </Modal> */
+      </Modal>
       <Footer />
     </>
   );
